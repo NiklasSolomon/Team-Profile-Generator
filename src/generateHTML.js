@@ -12,7 +12,7 @@ const generateWebpage = function (employeeEls) {
     </head>
     <body>
         <header>
-            <nav>My Team</nav>
+            <h1>My Team</h1>
         </header>
         <main>
             <div>

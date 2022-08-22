@@ -6,6 +6,8 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
+const generateHTML = require('./src/generateHTML');
+
 // Create an empty array list to store employee objects
 const teamData = [];
 
@@ -71,13 +73,15 @@ const addTeamMember = () => {
             // Gather Engineer data
             type: 'input',
             name: 'github',
-            message: "What is the engineer's Github username?"
+            message: "What is the engineer's Github username?",
+            when: (input) => input.role === "Engineer"
         },
         {
             // Gather intern data
             type: 'input',
             name: 'school',
-            message: "What school is the intern attending?"
+            message: "What school is the intern attending?",
+            when: (input) => input.role === "Intern"
         },
         {
             //Ask if they're done adding employees
