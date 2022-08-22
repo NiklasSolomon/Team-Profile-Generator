@@ -39,7 +39,7 @@ const addManager = () => {
         const {name, id, email, officeNumber} = managerData;
         const manager = new Manager (name, id, email, officeNumber);
         
-        teamArray.push(manager);
+        teamData.push(manager);
     })
 };
 
@@ -86,20 +86,25 @@ const addTeamMember = () => {
             message: 'Would you like to add another employee?'
         }
     ])
-    
-}
-
-
-
-    // inquirer.prompt()
-
     // THEN Build an engineer object
-
-
     // THEN Build an intern object
+    .then(employeeData => {
+        let {name, id, email, role, github, school, additionalEmployee} = employeeData;
+        let employee;
+        if (role === "Engineer") {
+            employee = new Engineer (name, id, email, github);
+        } else if (role === "Intern") {
+            employee = new Intern (name, id, email, school);
+        }
+        teamData.push(employee);
 
-
-    // inquirer.prompt()
+        if (additionalEmployee) {
+            return addTeamMember(teamData);
+        } else {
+            return teamData;
+        }
+    })
+};
 
     // THEN deciding which function to call
 
