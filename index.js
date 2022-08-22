@@ -109,3 +109,22 @@ const addTeamMember = () => {
     // THEN deciding which function to call
 
 // Generate the HTML and write it to ad file
+const writeFile = data => {
+    fs.writeFile('./dist/index.html', data, err => {
+        if (err) {
+            console.log(err);
+            return;
+        } else {
+        console.log("File created.")
+        }
+    })
+};
+
+addManager()
+    .then(addTeamMember)
+    .then(teamData => {
+        return generateHTML(teamData);
+    })
+    .then (pageHTML => {
+        return writeFile(pageHTML);
+    });
