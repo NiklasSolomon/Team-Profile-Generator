@@ -13,7 +13,6 @@ const teamData = [];
 const addManager = () => {
     // inquirer.prompt()
     return inquirer.prompt ([
-        // THEN Build a manager object
         {
             type: 'input',
             name: 'name',
@@ -35,22 +34,70 @@ const addManager = () => {
             message: "What is the manager's office number?"
         }
     ])
+    // THEN Build a manager object
+    .then(managerData => {
+        const {name, id, email, officeNumber} = managerData;
+        const manager = new Manager (name, id, email, officeNumber);
+        
+        teamArray.push(manager);
+    })
+};
+
+const addTeamMember = () => {
+    return inquirer.prompt ([
+        {
+            // Ask for which team member they want to add
+            type: 'list',
+            name: 'role',
+            message: "What role will the employee be filling?",
+            choices: ['Engineer', 'Intern']
+        },
+        {
+            type: 'input',
+            name: 'name',
+            message: "What is the employee's name?"
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: "What is the employee's ID?"
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: "What is the employee's email?"
+        },
+        {
+            // Gather Engineer data
+            type: 'input',
+            name: 'github',
+            message: "What is the engineer's Github username?"
+        },
+        {
+            // Gather intern data
+            type: 'input',
+            name: 'school',
+            message: "What school is the intern attending?"
+        },
+        {
+            //Ask if they're done adding employees
+            type: 'confirm',
+            name: 'additionalEmployee',
+            message: 'Would you like to add another employee?'
+        }
+    ])
+    
 }
 
 
-// Gather Engineer data
 
     // inquirer.prompt()
 
     // THEN Build an engineer object
 
-// Gather intern data
-
-    // inquirer.prompt()
 
     // THEN Build an intern object
 
-// Ask for which team member they want to add, or are they done
 
     // inquirer.prompt()
 
