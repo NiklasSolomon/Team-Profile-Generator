@@ -33,7 +33,7 @@ const engineerEl = function (engineer) {
             </div>
         </div>
     </div>
-    `
+    `;
 };
 
 //Generate element for intern information
@@ -50,7 +50,32 @@ const internEl = function (intern) {
                 <p>Email:<a>${intern.email}</a></p>
                 <p>School: ${intern.school}</p>
             </div>
+        </div>
     </div>
-</div>
-    `
+    `;
+};
+
+const generateWebpage = function (employeeEls) {
+    return`
+        <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Team Profile</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <nav>My Team</nav>
+        </header>
+        <main>
+            <div>
+                <div>${employeeEls}</div>
+            </div>
+        </main>
+    </body>
+    </html>
+    `;
 };
