@@ -1,3 +1,29 @@
+// Boilerplate for html file
+const generateWebpage = function (employeeEls) {
+    return`
+        <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Team Profile</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <nav>My Team</nav>
+        </header>
+        <main>
+            <div>
+                <div>${employeeEls}</div>
+            </div>
+        </main>
+    </body>
+    </html>
+    `;
+};
+
 // Generate HTML element for manager information
 const managerEl = function (manager) {
     return `
@@ -55,27 +81,32 @@ const internEl = function (intern) {
     `;
 };
 
-const generateWebpage = function (employeeEls) {
-    return`
-        <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Team Profile</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <header>
-            <nav>My Team</nav>
-        </header>
-        <main>
-            <div>
-                <div>${employeeEls}</div>
-            </div>
-        </main>
-    </body>
-    </html>
-    `;
+generateHTML = (data) => {
+    cardArray = [];
+
+    for (let i = 0; i < data.length; i++) {
+        const employee = data[i];
+        const role = employee.getRole();
+
+        if (role === 'Manager') {
+            const managerCard = managerEl(employee);
+            cardArray.push(managerCard);
+        }
+
+        if (role === 'Engineer') {
+            const engineerCard = engineerEl(employee);
+            cardArray.push(engineerCard);
+        }
+
+        if (role === 'Intern') {
+            const internCard = internEl(employee);
+            cardArray.push(internCard);
+        }
+    }
+
+    const employeeEls = cardArray.join('');
+    const generateTeam = generateWebpage(employeeEls);
+    return generateTeam;
 };
+
+module.exports = generateHTML;
