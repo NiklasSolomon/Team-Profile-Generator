@@ -6,6 +6,7 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
+// Require generateHTML file
 const generateHTML = require('./src/generateHTML');
 
 // Create an empty array list to store employee objects
