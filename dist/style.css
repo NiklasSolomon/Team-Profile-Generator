@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    background-color: #EFF2F1;
+}
+
+#header {
+    background-color: #FF3A20;
+    color: white;
+    padding: 5rem;
+}
+
+#card {
+    background-color: #C6D8D3;
+}
+
+#card-header {
+    background-color: #2667FF;
+    color: white;
+    padding-left: 1rem;
+}
+
+#employee-info {
+    background-color: #EFF2F1;
+    padding-left: 1rem;
+}

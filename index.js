@@ -47,6 +47,8 @@ const addManager = () => {
 };
 
 const addTeamMember = () => {
+    console.log('Adding team members');
+    
     return inquirer.prompt ([
         {
             // Ask for which team member they want to add
